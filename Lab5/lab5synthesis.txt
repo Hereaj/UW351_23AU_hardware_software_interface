@@ -1,0 +1,33 @@
+*****************************
+* Lab 5 Synthesis Questions *
+*****************************
+Name(s): Kevin Kuk, Jaehyeon Ahn
+NetID(s): 2377312, 2377324
+
+
+-----------------------------------------------------------
+1) Alignment: 
+   Reasoning:
+
+Since we add a malloc statement with 16 to allocate a block of memory before the existing malloc for class_grades, I did like this: void* ptr = malloc(16);
+‘ptr’ is declared as a void* because the malloc function is used to allocate a memory block whose type isn't specified. The primary purpose of ptr in our exercise is to observe memory allocation behaviors rather than to store a specific type of data.
+Then, add the code in part_(5) to print the addresses of both allocated blocks to examine their difference.
+I could get this:
+Address of ptr:		        0x13c46b0
+Address of class_grades: 	0x13c46d0
+The difference between these two addresses can be calculated to understand the alignment. Therefore, address of class_grades (0x13c46d0) minus address of ptr (0x13c46b0) is 32. The difference between the addresses of ptr and class_grades is 32 bytes. Given that I allocated 16 bytes for ptr, this suggests that the memory allocator is adding an additional 16 bytes of padding or alignment.
+From this observation, it appears that the allocator is using a 16-byte alignment. This is determined by the fact that even though we allocated 16 bytes, the next allocation (class_grades) starts 32 bytes later, indicating that the allocator aligns memory addresses to multiples of 16 bytes.
+
+
+-----------------------------------------------------------
+2) Boundary Tag Size:  
+   Reasoning:
+
+In the first test with malloc(24), I observed a 32-byte difference in addresses between ptr and class_grades. This difference aligns with my deduction that the 24-byte payload requested through malloc plus the 8-byte boundary tags results in a total of 32 bytes.
+
+In the second test with malloc(25), I noticed a 48-byte difference in addresses. My reasoning correctly attributes this difference to the increased payload size of 25 bytes plus the 8-byte boundary tags, summing up to 33 bytes. Considering the allocator's use of a 16-byte alignment, the heap block size becomes 48 bytes, and this observation aligns with my expectations.
+
+Similar reasoning was possible after testing with other values such as 23, 16, 17, etc. The consistent patterns in address differences for different payload sizes further support the conclusion that the boundary tags occupy 8 bytes, and the allocator uses a 16-byte alignment.
+
+
+-----------------------------------------------------------

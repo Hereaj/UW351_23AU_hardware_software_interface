@@ -1,0 +1,43 @@
+******************************
+* Lab 1a Synthesis Questions *
+******************************
+Name(s):  Jaehyeon Ahn
+NetID(s): 2377324
+
+
+-----------------------------------------------------------
+1) Use/Benefit and Equation:
+
+Pointer arithmetic expresses that the following address of an ant type of pointer is not the next bit but the next address its data type represents. if the integer pointer's next address is 4 bits(reperence 4 bytes), or the char pointer's next address is 1 bit.
+
+It is highly efficient when managing stored information by accessing the location where data is held by address. The reason is that moving the entire data consumes a lot of memory space. Suppose I want to place my assignment directory on the desktop. In that case, if I drag and move the icon, the computer moves the icon (and the icon's address), allowing me to view the address of my assignment directory from where it was previously located to the desktop.
+
+Pointers and arrays have a very close relationship. Array (name) cannot be changed. Additionally, the names of arrays can be called pointer constants. Therefore, the address where the array name is stored cannot be changed.
+So pointers and arrays have a lot in common. Pointer arithmetic is one of them. The syntax for dereferencing a value at the next data address of a pointer address and the syntax for accessing elements of an array have something in common. "*(arr + 2)" actually functions the same as "arr[2]". 
+
+
+-----------------------------------------------------------
+2) Steps:
+
+1. Declare two pointer types of data you want to calculate. For integer addresses, "int* ptr1, ptr2;"
+This step is to declare an 8-byte integer pointer that stores a 4-byte integer type and create a place to store the unknown value even if you do not know what the value will be assigned to the address.
+
+2. Assign a seat. "ptr1 = &arr; ptr2 =ptr + 1;"
+The address of the first element of the pre-declared integer array was designated as ptr1, and the address of the second element was defined as ptr1 + 1, the next integer of ptr1 (= &arr). ptr1 + 1 represents the address of the following integer because of pointer arithmetic. The address of 1 byte in memory is represented by 1 bit. Therefore, a 4-byte integer value refers to a 4-bit address. Pointer arithmetic expresses that the following address (= ptr2) of an integer pointer (= ptr1) is not the next bit but the next 4 bits.
+
+3. Calculate the difference. "int diff; diff = (char*)ptr2 - (char*)ptr1;"
+Express the address as a constant through casting. By casting a character pointer, pointer arithmetic was converted to 1 bit. Casting manipulates the data type of a variable, allowing the programmer to access the address in bits.
+
+ex) ptr1 = 0x0;
+    ptr2 = ptr + 1; (0x0 + 1 * 4 bit = 0x4)
+    diff = ptr2 - ptr1; (= 0x4 - 0x0 = 4)
+
+-----------------------------------------------------------
+3) Explain:
+All parameters to the swap_ints function must be pointers. 
+The reason is that we want to change the value contained in the address pointed to by the pointer. 
+Since the value of the address corresponding to the entered integer is accessed, let's assume that an integer variable is entered as a parameter. 
+In this case, the function converts the value of the address input as a constant and the value referenced by another address.
+
+
+-----------------------------------------------------------

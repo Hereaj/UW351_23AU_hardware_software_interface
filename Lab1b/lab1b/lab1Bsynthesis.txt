@@ -1,0 +1,28 @@
+******************************
+* Lab 1b Synthesis Questions *
+******************************
+Name(s):  Jaehyeon Ahn
+NetID(s): 2377324
+
+
+-----------------------------------------------------------
+1) Benefit 1: Because more item IDs can be expressed, managed items will become more diverse.
+
+   Benefit 2: The spaces and id parts are each separated by 2 bytes(can be represented by short type, making it easier to extract or move section elements.
+
+   Benefit 3: It also makes error handling easier. IDs and section_spaces that are cut off by 1 byte provide developers with more intuitive errors when debugging when a problem occurs in the code.
+
+   Drawback: The new operation stores a narrower range of items than the existing method, so when many items are stored in the aisle, it may contain only some of the necessary information.
+
+-----------------------------------------------------------
+2) Difference? Y
+
+   Explain: In the y = -1 statement, the decimal value -1 is assigned to y. In most computers, the hexadecimal value (0xffffffff) is converted to -1 using two's complement notation, which is a common way to represent the sign. In the statement y = 0xffffffff, the 32-bit hexadecimal constant 0xffffffff is assigned to y. Although they have the same hexadecimal constants, the main difference between the two statements is how the value of y is interpreted. The output results vary depending on how you translate hexadecimal constants. If you use unsigned casting, 0xffffffff will print the maximum value of the unsigned integer.
+
+-----------------------------------------------------------
+3) Explain:
+
+   Considerations: Because the number of bits representing floating point numbers is limited, exact real numbers cannot be described. Additionally, subtracting two different floating point numbers that are nearly identical results in a loss of precision, making it difficult to compare them accurately. Therefore, arithmetic operations between floating point numbers cause rounding errors.
+
+When choosing a threshold, it is essential to consider the precision of the floating point numbers used. In the case of medical devices that require fine units, using double precision provides higher accuracy than using single precision.
+
